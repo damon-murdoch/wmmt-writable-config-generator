@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<html>
+  <head>
+    <title>Writable Config Generator</title>
+
+    <!-- Page icon (Dragapult) -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+
+    <!-- Bootstrap External CSS File -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+  <body
+    id="body"
+    class="bg-secondary"
+    style="
+      background-image: url(img/header.png);
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: cover;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    "
+  >
+    <div
+      style="
+        background-color: rgba(24, 24, 24, 0.8);
+        width: 100vw;
+        height: 100vh;
+        background-size: cover;
+        overflow: hidden;
+      "
+    >
+      <div id="header" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- Navigation Bar -->
+        <div class="d-flex justify-content-center">
+          <nav class="navbar navbar-expand-lg navbar-dark">
+            <a
+              class="navbar-brand text-secondary"
+              href="https://www.dragapult.xyz"
+            >
+              <img
+                src="img/favicon.ico"
+                width="30"
+                height="30"
+                class="d-inline-block align-top"
+                alt="icon"
+              />
+              Dragapult.xyz
+            </a>
+            <div id="navbar" class="d-flex justify-content-center">
+              <a
+                class="text-secondary"
+                href="https://www.dragapult.xyz/index.html?wmmt"
+              >
+                Other Maximum Tune Resources
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div id="body">
+        <div class="d-flex justify-content-center flex-nowrap">
+          <div
+            class="bg-dark text-white rounded mx-2 my-2 p-2"
+            style="min-width: 50%; max-width: 1280px; opacity: 80%"
+          >
+            <div class="overflow-auto" style="max-height: 82vh">
+              <div id='title' class='text-justify text-light text-center'>
+                <h2>
+                  Writable Config Generator
+                </h2>
+                <h4>
+                  For Wangan Midnight Maximum Tune 5/DX/+/6/6R
+                </h4>
+                <h5>
+                  Tool by 
+                  <a class="text-light" href='https://www.twitter.com/SirScrubbington'>
+                    SirScrubbington
+                  </a>
+                </h5>
+              </div>
+              <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <th>Board Network ID</th>
+                    <th>Board Serial ID</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="input-group">
+                        <input
+                          class="form-control"
+                          id="networkId"
+                          name="networkId"
+                          value="0"
+                          min="0"
+                          readonly
+                        />
+                        <button
+                          id="rerollNetworkId"
+                          class="btn btn-secondary"
+                          onClick="generateNetworkId()"
+                        >
+                          Reroll
+                        </button>
+                        <button id="copyNetworkId" class="btn btn-secondary">
+                          Copy
+                        </button>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-group">
+                        <input
+                          class="form-control"
+                          id="serialId"
+                          name="serialId"
+                          value="0"
+                          min="0"
+                          readonly
+                        />
+                        <button
+                          id="rerollSerialId"
+                          class="btn btn-secondary"
+                          onClick="generateSerialId()"
+                        >
+                          Reroll
+                        </button>
+                        <button id="copySerialId" class="btn btn-secondary">
+                          Copy
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-dark">
+                <thead>
+                  <tr class="text-center">
+                    <th colspan="3">Writable Config File</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="3">
+                      <textarea
+                        style="overflow: auto; resize: none"
+                        rows="12"
+                        class="form-control"
+                        id="writableConfig"
+                        readonly
+                      ></textarea>
+                    </td>
+                  </tr>
+                  <tr class="text-center">
+                    <td>
+                      <button id="rerollBoth" class="btn btn-secondary">
+                        Reroll Both
+                      </button>
+                    </td>
+                    <td>
+                      <button id="copyContent" class="btn btn-secondary">
+                        Copy Content
+                      </button>
+                    </td>
+                    <td>
+                      <button id="downloadFile" class="btn btn-secondary">
+                        Download File
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-dark">
+                <thead>
+                  <tr class="text-center">
+                    <th>How To Use This File</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      Please save the above to a file named 'writableConfig.ini'
+                      and place it in your AMCUS directory (e.g.
+                      'wmmt6/AMCUS/writableConfig.ini'). You will then need to
+                      modify your 'AMConfig.ini' file with the following:
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <textarea
+                        style="overflow: auto; resize: none"
+                        rows="1"
+                        class="form-control"
+                        id="writableConfig"
+                        readonly
+                      >
+amdcfg-writableConfig=.\WritableConfig.ini</textarea
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Please see below for an example configuration.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <textarea
+                        style="overflow: auto; resize: none"
+                        rows="10"
+                        class="form-control"
+                        id="writableConfig"
+                        readonly
+                      >
+[AMAuthdConfig]
+;; AMAuthd 一般設定
+amdcfg-authType=ALL.NET
+amdcfg-sleepTime=50
+amdcfg-resoNameTimeout=180
+amdcfg-writableConfig=.\WritableConfig.ini
+amdcfg-showConsole=ENABLE
+amdcfg-logfile=
+amdcfg-export_log=
+</textarea
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <div id="javascript">
+    <!-- Page JavaScript Source File -->
+    <script type="text/javascript" src="index.js"></script>
+  </div>
+</html>
